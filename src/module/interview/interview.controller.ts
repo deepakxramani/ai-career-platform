@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { InterviewService } from './interview.service';
 
 @Controller('interview')
@@ -14,12 +14,18 @@ export class InterviewController {
 
   @Post('chat')
   async chat(@Body() body: any) {
-    if (!body) {
-      return { error: 'Request body missing' };
-    }
+    const { message, role, history, userId } = body;
 
-    const { message, role, history } = body;
+    return this.interviewService.chat(
+      message,
+      role,
+      history || [],
+      userId || 'demo-user',
+    );
+  }
 
-    return this.interviewService.chat(message, role, history || []);
+  @Get('history/:userId')
+  async getHistory(@Param('userId') userId: string) {
+    return this.interviewService.getHistory(userId);
   }
 }

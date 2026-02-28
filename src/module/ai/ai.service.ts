@@ -45,6 +45,9 @@ Analyze the resume and return JSON in the following structure:
   "recommended_roles": [],
   "market_readiness": "",
   "keyword_optimization_tips": [],
+  "salary_estimate": "",
+  "confidence_score": "",
+  "top_3_improvements_for_fast_growth": [],
   "rewrite_tips": {
     "summary": "",
     "experience": "",
@@ -84,6 +87,7 @@ ${resumeText}
     const response = await this.client.chat.completions.create({
       model: 'openai/gpt-4o-mini',
       messages: [{ role: 'user', content: prompt }],
+      response_format: { type: 'json_object' },
     });
 
     const content = response.choices[0].message.content;

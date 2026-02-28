@@ -11,4 +11,15 @@ export class InterviewController {
 
     return this.interviewService.generateQuestions(resumeText, role);
   }
+
+  @Post('chat')
+  async chat(@Body() body: any) {
+    if (!body) {
+      return { error: 'Request body missing' };
+    }
+
+    const { message, role, history } = body;
+
+    return this.interviewService.chat(message, role, history || []);
+  }
 }

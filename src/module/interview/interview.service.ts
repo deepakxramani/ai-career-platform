@@ -27,4 +27,35 @@ export class InterviewService {
 
     return result;
   }
+
+  async chat(message: string, role: string, history: any[]) {
+    const prompt = `
+    You are a senior technical interviewer.
+
+    Conduct a mock interview for the role: ${role}
+
+    Rules:
+    - Ask one question at a time
+    - Evaluate user's answer
+    - Give feedback
+    - Ask next question
+
+    Conversation history:
+    ${JSON.stringify(history)}
+
+    User message:
+    ${message}
+
+    Return ONLY JSON:
+
+    {
+       "feedback": "",
+      "score": "",
+      "next_question": ""
+    }
+
+    `;
+
+    return this.aiService.askAI(prompt);
+  }
 }

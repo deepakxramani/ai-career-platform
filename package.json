@@ -1,8 +1,8 @@
 {
-  "name": "ai-career-platform",
+  "name": "ai-career-backend",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Deepak Ramani",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -30,6 +30,7 @@
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
+    "firebase-admin": "^13.7.0",
     "mammoth": "^1.11.0",
     "mongoose": "^9.2.2",
     "multer": "^2.0.2",
